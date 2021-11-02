@@ -82,7 +82,32 @@ function cpuJoga() {
             } else if((jogo[1][1]=="X")&&(jogo[2][2]=="X")&&(jogo[0][0]=="")){
                 jogo[0][0]="O";
             } else
-        
+        if((jogo[0][2]=="X")&&(jogo[1][1]=="X")&&(jogo[2][0]=="")){
+            jogo[2][0]="O";
+        } else if((jogo [0][2]=="X")&&(jogo[2][0]=="X")&&(jogo[1][1]=="")){
+            jogo[1][1]="O";
+        } else if((jogo[2][0]=="X")&&(jogo[1][1]=="X")&&(jogo[0][2]=="")){
+            jogo[0][2]="O";
+        } else {
+            if(jogada<8){
+                do{
+                    l=Math.round(Math.random()*2);
+                    c=Math.round(Math.random()*2);
+                }while(jogo[l][c] !="");
+                jogo[l][c]="O";
+
+            }else{
+                for(var l=0; l<3; l++){
+                    for(var c=0; c<3;c++){
+                        if(jogo[l][c]==""){
+                            jogo[l][c]="O";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
         verifica=verificaVitoria();
         if(verifica!=""){
             alert(verifica+"WINNER");
