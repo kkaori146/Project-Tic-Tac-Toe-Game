@@ -1,4 +1,13 @@
-function play(p) {
+var jogo=[];
+var tabuleiro=[];
+var quemJoga=0;
+var verifica;
+var jogando=true;
+var nivel=1;
+var jogadaCpu=1;
+var quemComeca=1;
+
+function jogar(p) {
     if((jogando)&&(quemJoga==0)){
         switch(p){
             case 1:
@@ -55,7 +64,24 @@ function play(p) {
                     quemJoga=1;
                 }
             break;
+        }
+        updateTable();
+    }
+}
 
+function updateTable(){
+    for(var l=0; l<3; l++){
+        for(var c=0; c<3; c++){
+            if(jogo[l][c]=="X"){
+                tabuleiro[l][c].innerHTML="X";
+                tabuleiro[l][c].style.cursor="default";
+            } else if(jogo[l][c]=="O") {
+                tabuleiro[l][c].innerHTML="O";
+                tabuleiro[l][c].style.cursor="default";
+            } else {
+                tabuleiro[l][c].innerHTML="";
+                tabuleiro[l][c].style.cursor="pointer";
+            }
         }
     }
 }
@@ -68,6 +94,11 @@ function inicia() {
         ["","",""],
         ["","",""]
     ];
+    tabuleiro=[
+        [document.getElementById("p1"),document.getElementById("p2"), document.getElementById("p3")],
+        [document.getElementById("p4"),document.getElementById("p5"), document.getElementById("p6")],
+        [document.getElementById("p7"),document.getElementById("p8"), document.getElementById("p9")]
+    ];
 }
 
-window.addEventListener("load, inicia")
+window.addEventListener("load", inicia);

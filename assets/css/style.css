@@ -1,4 +1,4 @@
-#gameposition {
+#dvjogo {
     width: 160px;
     height: 160px;
     display: flex;
@@ -6,7 +6,7 @@
     align-content: flex-start;
 }
 
-.position {
+.posJogo {
     width: 50px;
     height: 50px;
     margin: 0px;
@@ -15,49 +15,49 @@
     display: flex;
 }
 
- #position1 {
+ #p1 {
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
 }
 
-#position2 {
+#p2 {
     border-right: 1px solid #000;
     border-left: 1px solid #000;
     border-bottom: 1px solid #000;
 }
 
-#position3 {
+#p3 {
     border-left: 1px solid #000;
     border-bottom: 1px solid #000;
 }
 
-#position4 {
+#p4 {
     border-right: 1px solid #000;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
 
-#position5 {
+#p5 {
     border: 1px solid #000;
 }
 
-#position6 {
+#p6 {
     border-left: 1px solid #000;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
 }
 
-#position7 {
+#p7 {
     border-right: 1px solid #000;
     border-top: 1px solid #000;
 }
 
-#position8 {
+#p8 {
     border-right: 1px solid #000;
     border-left: 1px solid #000;
     border-top: 1px solid #000;
 }
-#position9 {
+#p9 {
     border-left: 1px solid #000;
     border-top: 1px solid #000;
 }
