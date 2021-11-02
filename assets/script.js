@@ -40,7 +40,13 @@ function cpuJoga() {
                 jogo[2][0]="O";
             } else 
             //jogadas diagonal 1 
-       
+            if((jogo[0][0]=="O")&&(jogo[1][1]=="O")&&(jogo[2][2]=="")){
+                jogo [2][2]="O";
+            } else if((jogo[0][0]=="O")&&(jogo[2][2]=="O")&&(jogo[1][1]=="")){
+                jogo[1][1]="O";
+            } else if((jogo[1][1]=="O")&&(jogo[2][2]=="O")&&(jogo[0][0]=="")){
+                jogo[0][0]="O";
+            } else
 
         }
         verifica=verificaVitoria();
