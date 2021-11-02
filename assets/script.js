@@ -65,11 +65,11 @@ function jogar(p) {
                 }
             break;
         }
-        updateTable();
+        atualizaTabuleiro();
     }
 }
 
-function updateTable(){
+function atualizaTabuleiro(){
     for(var l=0; l<3; l++){
         for(var c=0; c<3; c++){
             if(jogo[l][c]=="X"){
