@@ -15,7 +15,7 @@ function cpuJoga() {
                 l=Math.round(Math.random()*2);
                 c=Math.round(Math.random()*2);
             }while(jogo[l][c]!="");
-            jogo[l][c]="0";
+            jogo[l][c]="O";
         } else if(nivel==2){
 
         }
@@ -112,11 +112,14 @@ function jogar(p) {
                 }
             break;
         }
-        atualizaTabuleiro();
-        verifica=verificaVitoria();
-        if(verifica!=""){
-            alert(verifica+"WINNER");
-            jogando=false;
+        if(quemJoga==1){
+            atualizaTabuleiro();
+            verifica=verificaVitoria();
+            if(verifica!=""){
+                alert(verifica+" WINNER");
+                jogando=false;
+            }
+            cpuJoga();
         }
     }
 }
