@@ -163,7 +163,7 @@ function start() {
     } else {
         starter=1;
         player=starter;
-        document.getElementById("whoStart").innerHTML="Who Start: Computer"
+        document.getElementById("whoStart").innerHTML="Who starts: Computer"
         computerPlay();
     }
 }
