@@ -17,6 +17,9 @@ function cpuJoga() {
             }while(jogo[l][c]!="");
             jogo[l][c]="O";
         } else if(nivel==2){
+            //NIVEL2
+            //ATAQUE
+            //jogadas linha 1
             if((jogo[0][0]=="O")&&(jogo[0][1]=="O")&&(jogo[0][2]=="")){
                 jogo[0][2]="O";
             } else if((jogo[0][0]=="O")&&(jogo[0][2]=="O")&&(jogo[0][1]=="")){
@@ -143,7 +146,7 @@ function verificaVitoria() {
     }
 
 
-function jogar(p) {
+function play(p) {
     if((jogando)&&(quemJoga==0)){
         switch(p){
             case 1:
@@ -230,7 +233,7 @@ function atualizaTabuleiro(){
     }
 }
 
-function inicia() {
+function start() {
     jogando=true;
     jogadaCpu=1;
     jogo=[
@@ -239,22 +242,22 @@ function inicia() {
         ["","",""]
     ];
     tabuleiro=[
-        [document.getElementById("p1"),document.getElementById("p2"), document.getElementById("p3")],
-        [document.getElementById("p4"),document.getElementById("p5"), document.getElementById("p6")],
-        [document.getElementById("p7"),document.getElementById("p8"), document.getElementById("p9")]
+        [document.getElementById("position1"),document.getElementById("position2"), document.getElementById("position3")],
+        [document.getElementById("position4"),document.getElementById("position5"), document.getElementById("position6")],
+        [document.getElementById("position7"),document.getElementById("position8"), document.getElementById("position9")]
     ];
     atualizaTabuleiro();
     if(quemComeca==1){
         quemComeca=0;
         quemJoga=quemComeca;
-        document.getElementById("dvQuemComeca").innerHTML="Who start: Player";
+        document.getElementById("whoStart").innerHTML="Who start: Player";
 
     } else {
         quemComeca=1;
         quemJoga=quemComeca;
-        document.getElementById("dvQuemComeca").innerHTML="Who Start: Computer"
+        document.getElementById("whoStart").innerHTML="Who Start: Computer"
         cpuJoga();
     }
 }
 
-window.addEventListener("load", inicia);
+window.addEventListener("load", start);
