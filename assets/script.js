@@ -1,171 +1,171 @@
-var jogo=[];
-var tabuleiro=[];
-var quemJoga=0;
-var verifica;
-var jogando=true;
-var nivel=1;
-var jogadaCpu=1;
-var quemComeca=1;
+var game=[];
+var table=[];
+var player=0;
+var verify;
+var playing=true;
+var level=1;
+var moveComputer=1;
+var starter=1;
 
-function cpuJoga() {
-    if(jogando) {
-        var l, c;
-        if(nivel==1){
+function computerPlay() {
+    if(playing) {
+        var row, column;
+        if(level==1){
             do {
-                l=Math.round(Math.random()*2);
-                c=Math.round(Math.random()*2);
-            }while(jogo[l][c]!="");
-            jogo[l][c]="O";
-        } 
-
-        verifica=verificaVitoria();
-        if(verifica!=""){
-            alert(verifica+" WINNER");
-            jogando=false;
+                row=Math.round(Math.random()*2);
+                column=Math.round(Math.random()*2);
+            }while(game[row][column]!="");
+            game[row][column]="O";
         }
-        atualizaTabuleiro();
-        quemJoga=0;
+
+        verify=verifyVictory();
+        if(verify!=""){
+            playing=false;
+            alert(verify+" is the WINNER");
+            
+        }
+        updateTable();
+        player=0;
     }
 }
 
-function verificaVitoria() {
-    var l, c;
-    //LINHAS
-    for(l=0;l<3;l++) {
-        if((jogo[l][0]==jogo[l][1])&&(jogo[l][1]==jogo[l][2])){
-            return jogo[l][0];
+function verifyVictory() {
+    var row, column;
+    //ROW
+    for(row=0; row<3; row++) {
+        if((game[row][0]==game[row][1])&&(game[row][1]==game[row][2])){
+            return game[row][0];
             }
         }
-    //COLUNAS
-        for(c=0;c<3;c++) {
-            if((jogo[0][c]==jogo[1][c])&&(jogo[1][c]==jogo[2][c])){
-                return jogo[0][c];   
+    //COLUMN
+        for(column=0; column<3; column++) {
+            if((game[0][column]==game[1][column])&&(game[1][column]==game[2][column])){
+                return game[0][column];   
             }        
         } 
-    //DIAGONAIS 
-        if((jogo[0][0]==jogo[1][1])&&(jogo[1][1]==jogo[2][0])){
-            return jogo[0][0]; 
+    //DIAGONAL
+        if((game[0][0]==game[1][1])&&(game[1][1]==game[2][2])){
+            return game[0][0]; 
         }  
-        if((jogo[0][2]==jogo[1][1])&&(jogo[1][1]==jogo[2][2])){
-            return jogo[0][2]; 
+        if((game[0][2]==game[1][1])&&(game[1][1]==game[2][0])){
+            return game[0][2]; 
         }
         return "";
     }
 
-
 function play(p) {
-    if((jogando)&&(quemJoga==0)){
+    if((playing)&&(player==0)){
         switch(p){
             case 1:
-                if(jogo[0][0]=="") {
-                    jogo[0][0]="X";
-                    quemJoga=1;
+                if(game[0][0]=="") {
+                    game[0][0]="X";
+                    player=1;
                 }
             break;
             case 2:
-                if(jogo[0][1]=="") {
-                    jogo[0][1]="X";
-                    quemJoga=1;
+                if(game[0][1]=="") {
+                    game[0][1]="X";
+                    player=1;
                 }
             break;
             case 3:
-                if(jogo[0][2]=="") {
-                    jogo[0][2]="X";
-                    quemJoga=1;
+                if(game[0][2]=="") {
+                    game[0][2]="X";
+                    player=1;
                 }
             break;
             case 4:
-                if(jogo[1][0]=="") {
-                    jogo[1][0]="X";
-                    quemJoga=1;
+                if(game[1][0]=="") {
+                    game[1][0]="X";
+                    player=1;
                 }
             break;
             case 5:
-                if(jogo[1][1]=="") {
-                    jogo[1][1]="X";
-                    quemJoga=1;
+                if(game[1][1]=="") {
+                    game[1][1]="X";
+                    player=1;
                 }
             break;
             case 6:
-                if(jogo[1][2]=="") {
-                    jogo[1][2]="X";
-                    quemJoga=1;
+                if(game[1][2]=="") {
+                    game[1][2]="X";
+                    player=1;
                 }
             break;
             case 7:
-                if(jogo[2][0]=="") {
-                    jogo[2][0]="X";
-                    quemJoga=1;
+                if(game[2][0]=="") {
+                    game[2][0]="X";
+                    player=1;
                 }
             break;
             case 8:
-                if(jogo[2][1]=="") {
-                    jogo[2][1]="X";
-                    quemJoga=1;
+                if(game[2][1]=="") {
+                    game[2][1]="X";
+                    player=1;
                 }
             break;
             default:
-                if(jogo[2][2]=="") {
-                    jogo[2][2]="X";
-                    quemJoga=1;
+                if(game[2][2]=="") {
+                    game[2][2]="X";
+                    player=1;
                 }
             break;
         }
-        if(quemJoga==1){
-            atualizaTabuleiro();
-            verifica=verificaVitoria();
-            if(verifica!=""){
-                alert(verifica+" WINNER");
-                jogando=false;
+        if(player==1){
+            updateTable();
+            verify=verifyVictory();
+            if(verify!=""){
+                alert(verify+" is the WINNER");
+                playing=false;
             }
-            cpuJoga();
+            computerPlay();
         }
     }
 }
 
-function atualizaTabuleiro(){
-    for(var l=0; l<3; l++){
-        for(var c=0; c<3; c++){
-            if(jogo[l][c]=="X"){
-                tabuleiro[l][c].innerHTML="X";
-                tabuleiro[l][c].style.cursor="default";
-            } else if(jogo[l][c]=="O") {
-                tabuleiro[l][c].innerHTML="O";
-                tabuleiro[l][c].style.cursor="default";
+function updateTable(){
+    for(var row=0; row<3; row++){
+        for(var column=0; column<3; column++){
+            if(game[row][column]=="X"){
+                table[row][column].innerHTML="X";
+                table[row][column].style.cursor="default";
+            } else if(game[row][column]=="O") {
+                table[row][column].innerHTML="O";
+                table[row][column].style.cursor="default";
             } else {
-                tabuleiro[l][c].innerHTML="";
-                tabuleiro[l][c].style.cursor="pointer";
+                table[row][column].innerHTML="";
+                table[row][column].style.cursor="pointer";
             }
         }
     }
 }
 
 function start() {
-    jogando=true;
-    jogadaCpu=1;
-    jogo=[
+    playing=true;
+    moveComputer=1;
+    game=[
         ["","",""],
         ["","",""],
         ["","",""]
     ];
-    tabuleiro=[
+    table=[
         [document.getElementById("position1"),document.getElementById("position2"), document.getElementById("position3")],
         [document.getElementById("position4"),document.getElementById("position5"), document.getElementById("position6")],
         [document.getElementById("position7"),document.getElementById("position8"), document.getElementById("position9")]
     ];
-    atualizaTabuleiro();
-    if(quemComeca==1){
-        quemComeca=0;
-        quemJoga=quemComeca;
-        document.getElementById("whoStart").innerHTML="Who start: Player";
+    
+    updateTable();
+    if(starter==1){
+        starter=0;
+        player=starter;
+        document.getElementById("whoStart").innerHTML="Who starts: Player";
 
     } else {
-        quemComeca=1;
-        quemJoga=quemComeca;
+        starter=1;
+        player=starter;
         document.getElementById("whoStart").innerHTML="Who Start: Computer"
-        cpuJoga();
+        computerPlay();
     }
 }
-
 
 window.addEventListener("load", start);
