@@ -133,8 +133,16 @@ function cpuJoga() {
                 jogo[0][2]="O";
             }else 
             //jogadas diagonal 1
+            if((jogo[0][0]=="X")&&(jogo[1][1]=="X")&&(jogo[2][2]=="")){
+                jogo[2][2]="O";
+            }else if((jogo[0][0]=="X")&&(jogo[2][2]=="X")&&(jogo[1][1]=="")){
+                jogo[1][1]="O";
+            }else if((jogo[1][1]=="X")&&(jogo[2][2]=="X")&&(jogo[0][0]=="")){
+                jogo[0][0]="O";
+            }else 
+            //jogadas diagonal 2
+            if
 
-            
             if(jogada<8){
                 do{
                     l=Math.round(Math.random()*2);
